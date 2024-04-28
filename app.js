@@ -8,9 +8,11 @@ const gamesRouter = require('./routes/games');;
 
 const PORT = 3000;
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(mainRoute, gamesRouter);
+app.use(
+  express.static(path.join(__dirname, 'public')),
+  mainRoute,
+  gamesRouter
+);
 
 app.get('/games/:id', (req, res) => {
   // код
