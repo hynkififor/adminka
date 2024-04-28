@@ -1,7 +1,6 @@
 const gamesRouter = require('express').Router();
 const { sendAllGames, sendUpdatedGames } = require('../controllers/games');
-const { findGameById, updateGamesFile, checkIsTitleInArray, updateGamesArray } = require('../middlewares/games');
-const { readData, writeData } = require("../utils/data");
+const { findGameById, updateGamesFile, checkIsTitleInArray, updateGamesArray, deleteGame } = require('../middlewares/games');
 
 gamesRouter.get("/games", getAllGames, sendAllGames);
 gamesRouter.delete("/games/:id", getAllGames, findGameById, deleteGame, updateGamesFile, sendUpdatedGames);
