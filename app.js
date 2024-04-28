@@ -12,6 +12,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(mainRoute, gamesRouter);
 
+app.get('/games/:id', (req, res) => {
+  // код
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running at PORT http://localhost:${PORT}`);
 });
