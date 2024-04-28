@@ -1,15 +1,23 @@
 const express = require('express');
+const app = express();
+const fs = require("fs").promises;
+const path = require('path');
+
 const PORT = 3000;
 
-const app = express();
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-    res.status(404).send('<h1>Страница не найдена</h1>');
-  });
+app.get('/', async (req, res) => {
+  await fs.readFile("./public/index.html").then((data) => {
+    res.header("Content-Type", "text/html");
+    res.send(data);
+  })
+});
 
 app.listen(PORT, () => {
-    console.log(`App listening on port ${PORT}`)
-})
+  console.log(`App listening on port ${PORT}`)
+});
+
 
 // const mainRoute = require('./routes/main');
 // const gamesRouter = require('./routes/games');
